@@ -14,19 +14,24 @@ if ($conn->connect_error) {
 }
 
 // get the variables from the URL request string
+$Acct_no = $_REQUEST['Acct_no'];
 $firstname = $_REQUEST['firstname'];
 $lastname = $_REQUEST['lastname'];
-$Acct_no = $_REQUEST['Acct_no'];
-$email = $_REQUEST['email'];
 
+// check whether account has any of the following accounts (checking, savings, investment)
 
-$sql = "INSERT INTO savings (firstname, lastname, Acct_no, email)
-VALUES ('$firstname', '$lastname', '$Acct_no', '$email')";
+$checksavings = "SELECT * FROM savings WHERE Acct_no='$Acct_no' AND firstname='$firstname'";
+$checkchecking = "SELECT * FROM checking WHERE Acct_no='$Acct_no' AND firstname='$firstname'";
+$checkinvestment = "SELECT * FROM Investment WHERE Acct_no='$Acct_no' AND firstname='$firstname'";
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully.<br>" . $firstname . " " . $lastname . " has logged in.";
+if ($conn->query($checksavings)->num_rows > 0) {
+    echo $firstname . " " . $lastname . " has logged in.";
+} else if ($conn->query($checkchecking)->num_rows > 0) {
+    echo $firstname . " " . $lastname . " has logged in.";
+} else if ($conn->query($checkinvestment)->num_rows > 0) {
+    echo $firstname . " " . $lastname . " has logged in.";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: cannot log in". "<br>" . $conn->error;
 }
 
 $conn->close();
