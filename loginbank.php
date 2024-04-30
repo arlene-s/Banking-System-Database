@@ -6,7 +6,7 @@
 $servername = "localhost";
 $username = "quickme1_4211";
 $password = "csci4211";
-$dbname = "bank";
+$dbname = "dbvpny1qngaxgp";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -18,19 +18,13 @@ $firstname = $_REQUEST['firstname'];
 $lastname = $_REQUEST['lastname'];
 $Acct_no = $_REQUEST['Acct_no'];
 $email = $_REQUEST['email'];
-$pass = $_REQUEST['pass'];
-
-$sql = "INSERT INTO bank (firstname, lastname, Acct_no, email, pass)
-VALUES ('$firstname', '$lastname', '$Acct_no', '$email', '$pass')";
 
 
-echo "<div class="links">
-        <a href="savings.html">View Savings</a>
-        <a href="checking.html">View Checking</a>
-    </div>";
+$sql = "INSERT INTO savings (firstname, lastname, Acct_no, email)
+VALUES ('$firstname', '$lastname', '$Acct_no', '$email')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    echo "New record created successfully.<br>" . $firstname . " " . $lastname . " has logged in.";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
