@@ -14,8 +14,8 @@ if ($conn->connect_error) {
 
 $Acct_no = $_REQUEST['Acct_no'];
 
-$sql = "DELETE FROM savings WHERE Acct_no='$Acct_no'";
-$sql = "DELETE FROM savings_transactions WHERE transid='$Acct_no'";
+$sql = "DELETE FROM Investment WHERE Acct_no='$Acct_no'";
+$sql = "DELETE FROM investment_transactions WHERE transid='$Acct_no'";
 
 if ($conn->query($sql) === TRUE) {
   echo "Account deleted successfully";

@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 $Acct_no = $_REQUEST['Acct_no'];
 
 // checking if account exists
-$sql = "SELECT * FROM savings WHERE Acct_no='$Acct_no'";
+$sql = "SELECT * FROM Investment WHERE Acct_no='$Acct_no'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

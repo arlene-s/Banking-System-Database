@@ -15,12 +15,12 @@ $Acct_no = $_REQUEST['Acct_no'];
 $address = $_REQUEST['address'];
 
 // Check if the record already exists
-$sql_select = "SELECT * FROM savings WHERE Acct_no='$Acct_no'";
+$sql_select = "SELECT * FROM Investment WHERE Acct_no='$Acct_no'";
 $result = $conn->query($sql_select);
 
 if ($result->num_rows > 0) {
     // Record exists, perform UPDATE
-    $sql = "UPDATE savings SET address='$address' WHERE Acct_no='$Acct_no'";
+    $sql = "UPDATE Investment SET address='$address' WHERE Acct_no='$Acct_no'";
     if ($conn->query($sql) === TRUE) {
         echo "Address updated successfully";
     } else {
@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     }
 } else {
     // Record doesn't exist
-    echo "Savings Account does not exist";
+    echo "Investment Account does not exist";
 }
 
 $conn->close();

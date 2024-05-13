@@ -14,17 +14,17 @@ if ($conn->connect_error) {
 
 $Acct_no = $_REQUEST['Acct_no'];
 
-$sql = "SELECT * FROM savings WHERE Acct_no='$Acct_no'";
+$sql = "SELECT * FROM Investment WHERE Acct_no='$Acct_no'";
 $result = $conn->query($sql);
 
 if ($result === false) {
     echo "Error: Account not found" . $conn->error;
 } else {
   while($row = $result->fetch_assoc()){
-    echo "Savings Account: " . $Acct_no . " ---- Balance: " . $row['Balance'] . "<br>";
+    echo "Investment Account: " . $Acct_no . " ---- Balance: " . $row['Balance'] . "<br>";
 
     // getting transaction info from table
-    $sql_trans = "SELECT * FROM savings_transactions WHERE transid='$Acct_no'";
+    $sql_trans = "SELECT * FROM investment_transactions WHERE transid='$Acct_no'";
     $result_trans = $conn->query($sql_trans);
   
     if ($result_trans->num_rows > 0) {

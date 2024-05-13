@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ABC Bank Savings Account</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    label {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+    input[type="text"], input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #4c8baf;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #4c8baf;
+    }
+  </style>
+</head>
+<body>
+  <h2>ABC Bank Savings Account</h2>
+
+  <form name="savings transactions" method="post" action="savingstrans.php">
+    <p>Account Number 
+      <input type="text" name="transid" required>
+    </p> 
+    <p>Transaction Type <br>
+      <input type="radio" name="trans_type" value="deposit" id="deposit">
+      <label for="deposit">Deposit</label><br>
+      <input type="radio" name="trans_type" value="withdraw" id="withdraw">
+      <label for="withdraw">Withdraw</label><br>
+      <input type="radio" name="trans_type" value="transfer" id="transfer" required>
+      <label for="transfer">Transfer</label><br>
+    </p> 
+    <p>Date
+      <input type="text" placeholder="YYYY-MM-DD" name="trans_date" required>
+    </p> 
+    <p>Transaction Amount 
+      <input type="text" name="trans_amount" required>
+    </p> 
+    <p>
+      <input type="submit" name="Submit" value="Submit" />
+    </p>
+  </form>
+</body>
+</html>

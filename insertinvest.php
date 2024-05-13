@@ -19,12 +19,12 @@ $address = $_REQUEST['address'];
 $email = $_REQUEST['email'];
 $phone = $_REQUEST['phone'];
 
-$sql_savings = "INSERT INTO savings (Acct_no, lastname, firstname, address, email, phone) VALUES ('$Acct_no', '$lastname', '$firstname', '$address', '$email', '$phone')";
+$sql_invest = "INSERT INTO Investment (Acct_no, lastname, firstname, address, email, phone) VALUES ('$Acct_no', '$lastname', '$firstname', '$address', '$email', '$phone')";
 
-$sql_insert = "INSERT INTO savings_transactions (transid, lastname, firstname, phone) VALUES ('$Acct_no', '$lastname', '$firstname', '$phone')";
+$sql_insert = "INSERT INTO investment_transactions (transid, lastname, firstname, phone) VALUES ('$Acct_no', '$lastname', '$firstname', '$phone')";
 
-if ($conn->query($sql_savings) === TRUE) {
-   echo "Savings Account created successfully";
+if ($conn->query($sql_invest) === TRUE) {
+   echo "Investment Account created successfully";
 } else {
    echo "Error: " . $conn->error;
 }
