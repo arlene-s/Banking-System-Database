@@ -48,22 +48,25 @@
   </style>
 </head>
 <body>
-  <h2>ABC Bank Savings Account</h2>
+  <h2>ABC Bank Savings Account Transfer</h2>
 
-  <form name="savings transactions" method="post" action="savingstrans.php">
-    <p>Account Number 
-      <input type="text" name="Acct_no" required>
+  <form name="savings transactions" method="post" action="savingstransfer.php">
+    <p>Savings Account Number 
+      <input type="text" name="transid" required>
     </p> 
-    <p>Transaction Type <br>
-      <input type="radio" name="trans_type" value="deposit" id="deposit">
-      <label for="deposit">Deposit</label><br>
-      <input type="radio" name="trans_type" value="withdraw" id="withdraw">
-      <label for="withdraw">Withdraw</label><br>
+    <p>Transfer to:<br>
+        <input type="radio" name="destination" value="checking" id="checking">
+        <label for="checking">Checking Account</label><br>
+        <input type="radio" name="destination" value="investment" id="investment">
+        <label for="investment">Investment Account</label><br>
+    </p> 
+    <p>Destination Account Number 
+        <input type="text" name="dest" required>
     </p> 
     <p>Date
       <input type="text" placeholder="YYYY-MM-DD" name="trans_date" required>
     </p> 
-    <p>Transaction Amount 
+    <p>Transfer Amount 
       <input type="text" name="trans_amount" required>
     </p> 
     <p>

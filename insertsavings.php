@@ -11,22 +11,30 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// get the variables from the URL request string
-$Acct_no = $_REQUEST['Acct_no'];
-$lastname = $_REQUEST['lastname'];
-$firstname = $_REQUEST['firstname'];
-$address = $_REQUEST['address'];
-$email = $_REQUEST['email'];
-$phone = $_REQUEST['phone'];
+// Get the variables from the URL request string
+$Acct_no = $_POST['Acct_no'];
+$lastname = $_POST['lastname'];
+$firstname = $_POST['firstname'];
+$address = $_POST['address'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+$interest_rate = $_POST['interest_rate'];
+$TRansID = $_POST['TRansID'];
 
-$sql_savings = "INSERT INTO savings (Acct_no, lastname, firstname, address, email, phone) VALUES ('$Acct_no', '$lastname', '$firstname', '$address', '$email', '$phone')";
-
-$sql_insert = "INSERT INTO savings_transactions (transid, lastname, firstname, phone) VALUES ('$Acct_no', '$lastname', '$firstname', '$phone')";
+$sql_savings = "INSERT INTO savings (Acct_no, lastname, firstname, address, email, phone, interest_rate, TRansID) VALUES ('$Acct_no', '$lastname', '$firstname', '$address', '$email', '$phone', '$interest_rate', '$TRansID')";
 
 if ($conn->query($sql_savings) === TRUE) {
    echo "Savings Account created successfully";
 } else {
-   echo "Error: " . $conn->error;
+   echo "Error: " . $sql_savings . "<br>" . $conn->error;
+}
+
+$sql_insert = "INSERT INTO savings_transactions (transid, lastname, firstname, phone) VALUES ('$TRansID', '$lastname', '$firstname', '$phone')";
+
+if ($conn->query($sql_insert) === TRUE) {
+   echo "";
+} else {
+   echo "Error: " . $sql_insert . "<br>" . $conn->error;
 }
    
 $conn->close();

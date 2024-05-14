@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     $currentBalance = $row['Balance'];
 
     // inserting transaction data into table
-    $sql_insert = "INSERT INTO investment_transactions (transid, trans_date, trans_type, trans_amount) VALUES ('$transid', '$trans_date', '$trans_type', '$trans_amount')";
+    $sql_insert = "INSERT INTO investment_transactions (trans_date, trans_type, trans_amount) VALUES ('$trans_date', '$trans_type', '$trans_amount')";
 
     // performing transaction based on transaction type
     if ($trans_type == 'deposit') {

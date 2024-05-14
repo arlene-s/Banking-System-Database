@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 } 
 
 // getting variables from table
-$transid = $_POST['transid'];
+$transid = $_POST['Acct_no'];
 $trans_date = $_POST['trans_date'];
 $trans_type = $_POST['trans_type'];
 $trans_amount = $_POST['trans_amount'];
@@ -28,7 +28,12 @@ if ($result->num_rows > 0) {
     $currentBalance = $row['Balance'];
 
     // inserting transaction data into table
-    $sql_insert = "INSERT INTO savings_transactions (transid, trans_date, trans_type, trans_amount) VALUES ('$transid', '$trans_date', '$trans_type', '$trans_amount')";
+    $sql_insert = "INSERT INTO savings_transactions (trans_date, trans_type, trans_amount) VALUES ('$trans_date', '$trans_type', '$trans_amount')";
+    if ($conn->query($sql_insert) === TRUE) {
+        echo "Transaction successful<br>";
+    } else {
+        echo "Error with transaction: " . $conn->error;
+    }
 
     // performing transaction based on transaction type
     if ($trans_type == 'deposit') {
@@ -47,7 +52,7 @@ if ($result->num_rows > 0) {
     // updating balance in savings table
     $sql_update = "UPDATE savings SET Balance='$newBalance' WHERE Acct_no='$transid'";
     if ($conn->query($sql_update) === TRUE) {
-        echo "Transaction successful<br>New Balance: $" . $newBalance;
+        echo "New Balance: $" . $newBalance;
     } else {
         echo "Error with transaction: " . $conn->error;
     }

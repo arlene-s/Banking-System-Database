@@ -21,7 +21,7 @@ if ($result === false) {
     echo "Error: Account not found" . $conn->error;
 } else {
   while($row = $result->fetch_assoc()){
-    echo "Investment Account: " . $Acct_no . " ---- Balance: " . $row['Balance'] . "<br>";
+    echo "Investment Account: " . $Acct_no . " ---- Balance: $" . $row['Balance'] . "<br>";
 
     // getting transaction info from table
     $sql_trans = "SELECT * FROM investment_transactions WHERE transid='$Acct_no'";
@@ -31,9 +31,9 @@ if ($result === false) {
         while ($row_trans = $result_trans->fetch_assoc()) {
             // check transaction type & display transactions
             if ($row_trans["trans_type"] == 'deposit') {
-                echo "Date: " . $row_trans["trans_date"] . " ---- Amount: +$" . $row_trans["trans_amount"] . "<br>";
+                echo "Date: " . $row_trans["trans_date"] . " ------------ Amount: + $" . $row_trans["trans_amount"] . "<br>";
             } elseif ($row_trans["trans_type"] == 'withdraw') {
-                echo "Date: " . $row_trans["trans_date"] . " ---- Amount: -$" . $row_trans["trans_amount"] . "<br>";
+                echo "Date: " . $row_trans["trans_date"] . " ------------ Amount: - $" . $row_trans["trans_amount"] . "<br>";
             }
         }
     } else {
