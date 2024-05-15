@@ -25,7 +25,9 @@ $date = $_REQUEST['date'];
 $sql = "INSERT INTO checking (Acct_no, lastname, firstname, address, email, phone, date) VALUES ('$Acct_no', '$lastname', '$firstname', '$address', '$email', '$phone', '$date')";
 
 if ($conn->query($sql) === TRUE) {
-   echo "New record created successfully";
+   echo "New Checking Account created successfully<br>";
+   echo "<a href='displaychecking.php'>Go to Checking Account</a><br>";
+   echo "<a href='dashboard.html'>Back to Dashboard</a><br>";
 } else {
    echo "Error: " . $sql . "<br>" . $conn->error;
 }
