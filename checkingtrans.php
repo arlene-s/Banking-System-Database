@@ -58,7 +58,8 @@ if ($result->num_rows > 0) {
         echo "Error with transaction: " . $conn->error;
     }
 
-    echo "<br><a href='dashboard.html'>Back To Dashboard</a><br>";
+    echo "<br><a href='displaychecking.html'>Go To Checking Account</a><br>";
+    echo "<br><a href='dashboard.html'>Go To Dashboard</a><br>";
 } else {
     echo "Account not found";
 }

@@ -45,11 +45,13 @@ if ($result->num_rows > 0) {
 
     echo "<br><a href='checkingtrans.html'>Make a Transaction</a><br><br>";
 
+    echo "<a href='checkingtransfer.html'>Transfer To Another Account</a><br><br>";
+
     echo "<a href='searchchecking.html'>Search Checking Info</a><br>";
     echo "<a href='updatechecking.html'>Update Checking Info</a><br>";
     echo "<a href='deletechecking.html'>Delete Checking Info</a><br><br>";
     
-    echo "<a href='dashboard.html'>Back To Dashboard</a><br>";
+    echo "<a href='dashboard.html'>Go To Dashboard</a><br>";
 } else {
   echo "0 results";
 }

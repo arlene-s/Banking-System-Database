@@ -19,7 +19,10 @@ $sql = "DELETE FROM checking WHERE Acct_no='$Acct_no'";
 //$sql1 = "DELETE FROM savings_transactions WHERE lastname='$lastname'";
 
 if ($conn->query($sql) === TRUE) {
-  echo "Account deleted successfully";
+  echo "Account deleted successfully<br><br>";
+
+  echo "<a href='displaychecking.html'>Go To Checking Account</a><br>";
+  echo "<br><a href='dashboard.html'>Go To Dashboard</a><br>";
 } else {
   echo "Error deleting account: <br>" . $conn->error;
 }

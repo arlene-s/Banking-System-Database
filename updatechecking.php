@@ -24,8 +24,9 @@ if ($result->num_rows > 0) {
     // Record exists, perform UPDATE
     $sql = "UPDATE checking SET address='$address', phone='$phone', email='$email' WHERE Acct_no='$Acct_no'";
     if ($conn->query($sql) === TRUE) {
-        echo "Info updated successfully";
-        echo "<a href='dashboard.html'>Back To Dashboard</a><br>";
+        echo "Info updated successfully<br><br>";
+        echo "<a href='displaychecking.html'>Go To Checking Account</a><br>";
+        echo "<br><a href='dashboard.html'>Go To Dashboard</a><br>";
     } else {
         echo "Error updating Info: " . $conn->error;
     }

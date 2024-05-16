@@ -38,7 +38,8 @@ if ($result->num_rows > 0) {
     echo "<a href='updatechecking.html'>Update Checking Info</a><br>";
     echo "<a href='deletechecking.html'>Delete Checking Info</a><br><br>";
     
-    echo "<a href='dashboard.html'>Back To Dashboard</a><br>";
+    echo "<a href='displaychecking.html'>Go To Checking Account</a><br>";
+    echo "<br><a href='dashboard.html'>Go To Dashboard</a><br>";
 } else {
   echo "0 results";
 }
