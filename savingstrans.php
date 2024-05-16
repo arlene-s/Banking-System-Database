@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     $currentBalance = $row['Balance'];
 
     // inserting transaction data into table
-    $sql_insert = "INSERT INTO savings_transactions (trans_date, trans_type, trans_amount) VALUES ('$trans_date', '$trans_type', '$trans_amount')";
+    $sql_insert = "INSERT INTO savings_transactions (transid, trans_date, trans_type, trans_amount) VALUES ('$transid', '$trans_date', '$trans_type', '$trans_amount')";
     if ($conn->query($sql_insert) === TRUE) {
         echo "Transaction successful<br>";
     } else {
@@ -56,6 +56,8 @@ if ($result->num_rows > 0) {
     } else {
         echo "Error with transaction: " . $conn->error;
     }
+
+    echo "<br><a href='dashboard.html'>Back To Dashboard</a><br>";
 } else {
     echo "Account not found";
 }

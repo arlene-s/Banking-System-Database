@@ -14,32 +14,38 @@ if ($conn->connect_error) {
 
 $Acct_no = $_REQUEST['Acct_no'];
 
-$sql = "SELECT * FROM Investment WHERE Acct_no='$Acct_no'";
+$sql = "SELECT *  FROM Investment where Acct_no=$Acct_no";
 $result = $conn->query($sql);
 
-if ($result === false) {
-    echo "Error: Account not found" . $conn->error;
-} else {
-  while($row = $result->fetch_assoc()){
-    echo "Investment Account: " . $Acct_no . " ---- Balance: $" . $row['Balance'] . "<br>";
+$sql_trans = "SELECT trans_date, trans_type, trans_amount from investment_transactions WHERE transid=$Acct_no";
+$result1 = $conn->query($sql_trans);
 
-    // getting transaction info from table
-    $sql_trans = "SELECT * FROM investment_transactions WHERE transid='$Acct_no'";
-    $result_trans = $conn->query($sql_trans);
-  
-    if ($result_trans->num_rows > 0) {
-        while ($row_trans = $result_trans->fetch_assoc()) {
-            // check transaction type & display transactions
-            if ($row_trans["trans_type"] == 'deposit') {
-                echo "Date: " . $row_trans["trans_date"] . " ------------ Amount: + $" . $row_trans["trans_amount"] . "<br>";
-            } elseif ($row_trans["trans_type"] == 'withdraw') {
-                echo "Date: " . $row_trans["trans_date"] . " ------------ Amount: - $" . $row_trans["trans_amount"] . "<br>";
-            }
-        }
+if ($result->num_rows > 0) {
+  // output data
+    $row = $result->fetch_assoc();
+    echo "Account Number: " . $row["Acct_no"]. "<br>";
+    echo "Name: " . $row["firstname"]. " " . $row["lastname"]. "<br><br>";
+
+    echo "Balance: $" . $row["Balance"]."<br><br>";
+
+    if ($result1->num_rows > 0) {
+        // check transaction type & display transactions
+      while($row = $result1->fetch_assoc()) {
+          echo "Date: " . $row["trans_date"]. " - Type: " . $row["trans_type"]. " - Amount: " . $row["trans_amount"]. "<br>";
+      }
     } else {
-        echo "0 results";
+      echo "No transactions to display<br><br>";
     }
-  }
+
+    echo "<br><a href='investtrans.html'>Make a Transaction</a><br><br>";
+
+    echo "<a href='searchinvest.html'>Search Investments Info</a><br>";
+    echo "<a href='updateinvest.html'>Update Investments Info</a><br>";
+    echo "<a href='deleteinvest.html'>Delete Investments Info</a><br><br>";
+    
+    echo "<a href='dashboard.html'>Back To Dashboard</a><br>";
+} else {
+  echo "0 results";
 }
 
 $conn->close();

@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     $currentBalance = $row['Balance'];
 
     // inserting transaction data into table
-    $sql_insert = "INSERT INTO investment_transactions (trans_date, trans_type, trans_amount) VALUES ('$trans_date', '$trans_type', '$trans_amount')";
+    $sql_insert = "INSERT INTO investment_transactions (transid, trans_date, trans_type, trans_amount) VALUES ('$transid', '$trans_date', '$trans_type', '$trans_amount')";
 
     // performing transaction based on transaction type
     if ($trans_type == 'deposit') {
@@ -47,10 +47,11 @@ if ($result->num_rows > 0) {
     // updating balance in savings table
     $sql_update = "UPDATE Investment SET Balance='$newBalance' WHERE Acct_no='$transid'";
     if ($conn->query($sql_update) === TRUE) {
-        echo "Transaction successful<br>New Balance: $" . $newBalance;
+        echo "Transaction successful<br>New Balance: $" . $newBalance . "<br><br>";
     } else {
         echo "Error with transaction: " . $conn->error;
     }
+    echo "<a href='dashboard.html'>Back To Dashboard</a><br>";
 } else {
     echo "Account not found";
 }

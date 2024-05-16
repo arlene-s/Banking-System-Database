@@ -13,13 +13,10 @@ if ($conn->connect_error) {
 } 
 
 $Acct_no = $_REQUEST['Acct_no'];
-$lastname = $_REQUEST['lastname'];
 
-// Corrected DELETE queries
 $sql = "DELETE FROM savings WHERE Acct_no='$Acct_no'";
-$sql1 = "DELETE FROM savings_transactions WHERE lastname='$lastname'";
 
-if ($conn->query($sql) === TRUE && $conn->query($sql1) === TRUE) {
+if ($conn->query($sql) === TRUE) {
   echo "Account deleted successfully";
 } else {
   echo "Error deleting account: <br>" . $conn->error;

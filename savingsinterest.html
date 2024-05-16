@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ABC Bank Savings Account</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    label {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+    input[type="text"], input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #4c8baf;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #4c8baf;
+    }
+  </style>
+</head>
+<body>
+  <h1>ABC Bank Savings Account</h1>
+  <h2>Interest Calculator</h2>
+
+  <form name="savings transactions" method="post" action="savingsinterest.php">
+    <p>Savings Account Number 
+      <input type="text" placeholder="Enter Account Number" name="Acct_no" required>
+    </p>
+    <p>Date 
+        <input type="text" placeholder="Enter YYYY-MM-DD" name="date" required>
+      </p>  
+    <p>
+      <input type="submit" name="Submit" value="Submit" />
+    </p>
+  </form>
+</body>
+</html>

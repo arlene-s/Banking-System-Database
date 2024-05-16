@@ -22,6 +22,11 @@ if ($result->num_rows > 0) {
   // if account exists, output data 
   while($row = $result->fetch_assoc()) {
     echo "Account Number: " . $row["Acct_no"] . "<br>Name: " . $row["firstname"] . " " . $row["lastname"]. "<br>Email: " . $row["email"]. "<br>Phone: " . $row["phone"] . "<br>Address: " . $row["address"] . " ------ Balance: $" . $row["Balance"]. "<br>";
+
+    echo "<a href='updatesavings.html'>Update Savings Info</a><br>";
+    echo "<a href='deletesavings.html'>Delete Savings Info</a><br><br>";
+    
+    echo "<a href='dashboard.html'>Back To Dashboard</a><br>";
   }
 } else {
   // if account does not exist

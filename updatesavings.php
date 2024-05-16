@@ -23,6 +23,7 @@ if ($result->num_rows > 0) {
     $sql = "UPDATE savings SET address='$address' WHERE Acct_no='$Acct_no'";
     if ($conn->query($sql) === TRUE) {
         echo "Address updated successfully";
+        echo "<a href='dashboard.html'>Back To Dashboard</a><br>";
     } else {
         echo "Error updating address: " . $conn->error;
     }

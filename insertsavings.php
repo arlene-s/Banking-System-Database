@@ -19,22 +19,16 @@ $address = $_POST['address'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 $interest_rate = $_POST['interest_rate'];
-$TRansID = $_POST['TRansID'];
+$Date = $_POST['Date'];
 
-$sql_savings = "INSERT INTO savings (Acct_no, lastname, firstname, address, email, phone, interest_rate, TRansID) VALUES ('$Acct_no', '$lastname', '$firstname', '$address', '$email', '$phone', '$interest_rate', '$TRansID')";
+$sql_savings = "INSERT INTO savings (Acct_no, lastname, firstname, address, email, phone, interest_rate, Date) VALUES ('$Acct_no', '$lastname', '$firstname', '$address', '$email', '$phone', '$interest_rate', '$Date')";
 
 if ($conn->query($sql_savings) === TRUE) {
-   echo "Savings Account created successfully";
+   echo "Savings Account created successfully<br>";
+   echo "<a href='displaysavings.php'>Go to Savings Account</a><br>";
+   echo "<a href='dashboard.html'>Back to Dashboard</a><br>";
 } else {
    echo "Error: " . $sql_savings . "<br>" . $conn->error;
-}
-
-$sql_insert = "INSERT INTO savings_transactions (transid, lastname, firstname, phone) VALUES ('$TRansID', '$lastname', '$firstname', '$phone')";
-
-if ($conn->query($sql_insert) === TRUE) {
-   echo "";
-} else {
-   echo "Error: " . $sql_insert . "<br>" . $conn->error;
 }
    
 $conn->close();
